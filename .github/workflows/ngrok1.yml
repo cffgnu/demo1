@@ -3,24 +3,17 @@ description: 'A github action for tunelling TCP traffic from within Workflow env
 on:
   workflow_dispatch:
     inputs:
-      ngrok_authtoken:
-        description: token
-        required: true
-branding:
-  icon: 'activity'  
-  color: 'green'
-
-inputs:
-  timeout:  
-    description: 'Challenge deployment timeout'
-    required: true
-    default: '1h'
-  port:
-    description: 'The port to forward traffic to'
-    required: true
-  ngrok_authtoken:
-    description: 'Ngrok authorization token'
-    required: true
+      timeout:
+		description: timeout
+		required: true
+		default: '1h'
+	
+	  port:
+		description: 'The port to forward traffic to'
+		required: true
+	  ngrok_authtoken:
+		description: 'Ngrok authorization token'
+		required: true
 
 runs:
   using: "composite"

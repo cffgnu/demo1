@@ -6,7 +6,7 @@ on:
         description: Time to run chisel
         required: true
         default: 10m
-        
+
 jobs:
   socks5-proxy:
     runs-on: ubuntu-latest
@@ -37,4 +37,3 @@ jobs:
       - name: Shutdown and view logs of Cloudflare Tunnel
         if: always()
         uses: AnimMouse/setup-cloudflared/shutdown@v1
-		

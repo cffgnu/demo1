@@ -1,19 +1,19 @@
-name: 'Ngrok TCP Tunelling'
+name: Ngrok TCP Tunelling
 description: 'A github action for tunelling TCP traffic from within Workflow environemt'
 on:
   workflow_dispatch:
     inputs:
       timeout:
-		description: timeout
-		required: true
-		default: '1h'
-	
-	  port:
-		description: 'The port to forward traffic to'
-		required: true
-	  ngrok_authtoken:
-		description: 'Ngrok authorization token'
-		required: true
+        description: timeout
+        required: true
+        default: '1h'
+  
+      port:
+        description: 'The port to forward traffic to'
+        required: true
+      ngrok_authtoken:
+        description: 'Ngrok authorization token'
+        required: true
 
 runs:
   using: "composite"

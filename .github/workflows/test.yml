@@ -32,7 +32,7 @@ jobs:
           cloudflare_tunnel_id: ${{ secrets.CLOUDFLARE_TUNNEL_ID }}
           
       - name: Run chisel
-        run: timeout "${{ github.event.inputs.time-duration }}" chisel server --socks5 || true
+        run: timeout "${{ github.event.inputs.time-duration }}" chisel server -p 8080 --socks5 || true
         
       - name: Shutdown and view logs of Cloudflare Tunnel
         if: always()

@@ -1,5 +1,5 @@
 name: Ngrok TCP Tunelling
-description: 'A github action for tunelling TCP traffic from within Workflow environemt'
+
 on:
   workflow_dispatch:
     inputs:
@@ -15,14 +15,15 @@ on:
         description: 'Ngrok authorization token'
         required: true
 
-runs:
-  using: "composite"
-  steps: 
-    - run: wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
-      shell: bash
-    - run: unzip -qq ngrok-stable-linux-amd64.zip
-      shell: bash
-    - run: ./ngrok authtoken ${{ inputs.ngrok_authtoken }}
-      shell: bash
-    - run: timeout ${{ inputs.timeout }} ./ngrok tcp ${{ inputs.port }}
-      shell: bash
+jobs:
+  socks5-proxy:
+    runs-on: ubuntu-latest
+    steps: 
+      - run: wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+        shell: bash
+      - run: unzip -qq ngrok-stable-linux-amd64.zip
+        shell: bash
+      - run: ./ngrok authtoken ${{ inputs.ngrok_authtoken }}
+        shell: bash
+      - run: timeout ${{ inputs.timeout }} ./ngrok tcp ${{ inputs.port }}
+        shell: bash
